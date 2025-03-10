@@ -1,0 +1,114 @@
+/* ملف styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: black; /* خلفية سوداء */
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #e91e63;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    margin-top: 60px; /* لتعويض مكان القائمة */
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #e91e63;
+}
+
+p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+button {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #c2185b;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#message-container {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* تأثير النص المضيء */
+.glowing-text {
+    color: #ff4757;
+    text-shadow: 0 0 5px #ff4757, 0 0 10px #ff4757, 0 0 20px #ff4757, 0 0 40px #ff4757;
+}
+
+/* أنيميشن الكتابة */
+.typewriter {
+    overflow: hidden; /* إخفاء النص الزائد */
+    border-right: 2px solid #ff4757; /* مؤشر الكتابة */
+    white-space: nowrap; /* منع النص من الانتقال لسطر جديد */
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #ff4757; }
+}

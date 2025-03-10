@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع هبه</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- صفحة كلمة السر -->
+    <section id="password-page" class="page">
+        <h1 class="glowing-text">أهلاً بكِ يا هباوي 🌹</h1>
+        <p class="typewriter">أدخلي كلمة السر لتدخلي إلى عالمنا.</p>
+        <input type="password" id="password-input" placeholder="كلمة السر">
+        <button onclick="checkPassword()">ادخلي</button>
+        <p id="error-message" style="color: red; display: none;">كلمة السر غير صحيحة!</p>
+    </section>
+
+    <!-- الموقع الرئيسي (مخفي في البداية) -->
+    <div id="main-site" style="display: none;">
+        <!-- قائمة التنقل -->
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showPage('home')">الصفحة الرئيسية</a></li>
+                <li><a href="#" onclick="showPage('story')">قصتنا</a></li>
+                <li><a href="#" onclick="showPage('gift')">هديتي لكِ</a></li>
+                <li><a href="#" onclick="showPage('choices')">خياراتنا</a></li>
+                <li><a href="#" onclick="showPage('messages')">رسائلي لكِ</a></li>
+            </ul>
+        </nav>
+
+        <!-- الصفحة الرئيسية -->
+        <section id="home" class="page">
+            <h1 class="glowing-text">مرحبًا هباوي 🌹</h1>
+            <p class="typewriter">كل لحظة معكِ هي هدية، وهذا الموقع هو مجرد طريقة صغيرة لأقول لكِ كم تعنيني.</p>
+        </section>
+
+        <!-- صفحة "قصتنا" -->
+        <section id="story" class="page" style="display: none;">
+            <h1 class="glowing-text">قصتنا</h1>
+            <p class="typewriter">هنا نعرض ذكرياتنا الجميلة معًا يا هباوي.</p>
+            <img src="memory1.jpg" alt="ذكريات">
+        </section>
+
+        <!-- صفحة "هديتي لك" -->
+        <section id="gift" class="page" style="display: none;">
+            <h1 class="glowing-text">هديتي لكِ يا هباوي</h1>
+            <p class="typewriter">لقد اخترت هذا لكِ لأنكِ تجعلين حياتي أجمل، وأردت أن أرد الجميل ولو بقليل.</p>
+            <img src="gift.jpg" alt="هدية">
+        </section>
+
+        <!-- صفحة "خياراتنا" -->
+        <section id="choices" class="page" style="display: none;">
+            <h1 class="glowing-text">لنلعب معًا يا هباوي!</h1>
+            <p class="typewriter">أين سنذهب في عطلتنا القادمة؟</p>
+            <button onclick="selectChoice('رحلة إلى الجبل')">رحلة إلى الجبل</button>
+            <button onclick="selectChoice('عشاء في مكان جديد')">عشاء في مكان جديد</button>
+            <button onclick="selectChoice('ليلة أفلام في المنزل')">ليلة أفلام في المنزل</button>
+            <p id="selected-choice" class="glowing-text"></p>
+        </section>
+
+        <!-- صفحة "رسائلي لك" -->
+        <section id="messages" class="page" style="display: none;">
+            <h1 class="glowing-text">رسائلي لكِ يا هباوي</h1>
+            <p class="typewriter">هذه بعض الرسائل التي أريد أن أشاركها معكِ.</p>
+            <div id="message-container" class="typewriter">
+                <p>هَبَهْ، يا نور عيوني وروحي،</p>
+                <p>أنتِ الحب الذي في قلبي يروحي.</p>
+                <p>بكِ تغنى الوجود، وبكِ ازدهر،</p>
+                <p>أنتِ الحلم الذي في قلبي يسطر.</p>
+                <p>يا هباوي، يا أغلى من الدنيا،</p>
+                <p>أنتِ النور الذي في ظلمتي يهدي.</p>
+                <p>بكِ أدركت معنى الحياة،</p>
+                <p>وبكِ صار قلبي في السماء يرتقي.</p>
+                <p>أنتِ الحب الذي لا ينتهي،</p>
+                <p>أنتِ الأمل الذي في قلبي يبقى.</p>
+                <p>يا هبه، يا أغلى من كل شيء،</p>
+                <p>أنتِ الحلم الذي في قلبي يسعى.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
