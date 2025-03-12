@@ -31,3 +31,36 @@ function selectChoice(choice) {
     // عرض الاختيار الذي تم تحديده
     document.getElementById('selected-choice').innerText = `اختياركِ هو: ${choice}`;
 }
+
+class TypeWriter {
+    constructor(element, options = {}) {
+        // The element to type into
+        this.element = element;
+        
+        // Just display the text without animation
+        this.init();
+    }
+
+    init() {
+        // Keep the original text without animation
+        const originalText = this.element.textContent;
+        this.element.style.opacity = '1';
+        this.element.style.visibility = 'visible';
+    }
+}
+
+// Initialize static text display when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Find all elements with typewriter class
+    const typewriterElements = document.querySelectorAll('.typewriter');
+    
+    typewriterElements.forEach(element => {
+        // Create new instance to handle the text display
+        new TypeWriter(element);
+    });
+});
+
+// Export for module usage
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = TypeWriter;
+}

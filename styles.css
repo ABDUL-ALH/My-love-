@@ -1,20 +1,38 @@
 /* ملف styles.css */
+:root {
+    --rose-red: #e31b5d;
+    --rose-pink: #ff6b9c;
+    --rose-dark: #9e1b3d;
+    --rose-light: #ffb6c1;
+    --leaf-green: #4a7c59;
+    --cream: #fff5f5;
+    --gold: #ffd700;
+    --primary-color: #e91e63;
+    --primary-dark: #c2185b;
+    --text-color: #ffffff;
+    --background-color: #000000;
+    --transition-speed: 0.3s;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: black; /* خلفية سوداء */
-    color: white;
-    text-align: center;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #000000, #1a0f0f);
+    color: var(--cream);
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 nav {
-    background-color: #e91e63;
-    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid var(--rose-pink);
 }
 
 nav ul {
@@ -23,20 +41,35 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-}
-
-nav ul li {
-    margin: 0 15px;
+    gap: 40px;
 }
 
 nav ul li a {
-    color: white;
+    color: var(--rose-light);
     text-decoration: none;
     font-size: 1.1rem;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, var(--rose-pink), var(--gold));
+    transition: width 0.3s ease;
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+    color: var(--rose-pink);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 .page {
@@ -44,71 +77,146 @@ nav ul li a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     padding: 20px;
-    margin-top: 60px; /* لتعويض مكان القائمة */
+    position: relative;
+    z-index: 1;
+}
+
+.page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.8));
+    z-index: -1;
 }
 
 h1 {
-    font-size: 2.5rem;
-    color: #e91e63;
+    font-size: 3.5rem;
+    color: var(--rose-pink);
+    margin-bottom: 1.5rem;
+    text-transform: none;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+                 0 0 20px var(--rose-red);
+    letter-spacing: 2px;
 }
 
 p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin: 20px 0;
+    max-width: 600px;
+    line-height: 1.8;
+    color: var(--rose-light);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 button {
-    background-color: #e91e63;
-    color: white;
+    background: linear-gradient(45deg, var(--rose-red), var(--rose-pink));
+    color: var(--cream);
     border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
+    padding: 15px 40px;
+    font-size: 1.2rem;
     cursor: pointer;
-    border-radius: 5px;
-    margin-top: 20px;
+    border-radius: 30px;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(227, 27, 93, 0.3);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
 }
 
 button:hover {
-    background-color: #c2185b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(227, 27, 93, 0.5);
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 20px;
+button:hover::before {
+    left: 100%;
 }
 
-#message-container {
-    margin-top: 20px;
-    font-size: 1.1rem;
-    color: #555;
-}
-
-/* تأثير النص المضيء */
 .glowing-text {
-    color: #ff4757;
-    text-shadow: 0 0 5px #ff4757, 0 0 10px #ff4757, 0 0 20px #ff4757, 0 0 40px #ff4757;
+    color: var(--rose-pink);
+    text-shadow: 0 0 5px var(--rose-pink),
+                 0 0 10px var(--rose-pink),
+                 0 0 20px var(--rose-red),
+                 0 0 40px var(--rose-red);
+    animation: glow 2s ease-in-out infinite alternate;
 }
 
-/* أنيميشن الكتابة */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px var(--rose-pink),
+                     0 0 10px var(--rose-pink),
+                     0 0 20px var(--rose-red);
+    }
+    to {
+        text-shadow: 0 0 10px var(--rose-pink),
+                     0 0 20px var(--rose-pink),
+                     0 0 30px var(--rose-red),
+                     0 0 40px var(--rose-red);
+    }
+}
+
 .typewriter {
-    overflow: hidden; /* إخفاء النص الزائد */
-    border-right: 2px solid #ff4757; /* مؤشر الكتابة */
-    white-space: nowrap; /* منع النص من الانتقال لسطر جديد */
+    overflow: visible;
+    white-space: normal;
     margin: 0 auto;
-    letter-spacing: 0.15em;
-    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    opacity: 1;
 }
 
+/* Removing the typing and cursor animations */
 @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+    from { width: 0 }
+    to { width: 100% }
 }
 
 @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: #ff4757; }
+    from, to { border-color: transparent }
+    50% { border-color: var(--rose-pink) }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+        padding: 0 20px;
+    }
+
+    button {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
 }
