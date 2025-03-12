@@ -5,6 +5,7 @@ class HeartParticles {
         this.particles = [];
         this.mouseX = 0;
         this.mouseY = 0;
+        this.isMobile = window.innerWidth <= 414;
         this.resize();
         this.init();
         this.bindEvents();
@@ -14,14 +15,15 @@ class HeartParticles {
     resize() {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
+        this.isMobile = window.innerWidth <= 414;
     }
 
     init() {
         // Create particles in heart shape
-        const numParticles = 3000;
+        const numParticles = this.isMobile ? 2000 : 3000; // Fewer particles for mobile
         const centerX = this.canvas.width / 2;
         const centerY = this.canvas.height / 2;
-        const scale = 15; // Size of the heart
+        const scale = this.isMobile ? 25 : 15; // Larger scale for mobile
 
         // Create heart outline particles
         for (let i = 0; i < numParticles * 0.7; i++) {
@@ -40,16 +42,20 @@ class HeartParticles {
                 originX: centerX + (x * scale),
                 originY: centerY - (y * scale),
                 color: 'rgba(255, 107, 156, 0.8)',
-                size: Math.random() * 2 + 1,
+                size: this.isMobile ? Math.random() * 3 + 1.5 : Math.random() * 2 + 1, // Larger particles for mobile
                 vx: 0,
                 vy: 0
             });
         }
 
+        // Calculate letter size and position based on heart size
+        const letterSize = this.isMobile ? 35 : 20;
+        const letterSpacing = this.isMobile ? 25 : 15;
+
         // Add particles for letter H
-        const hPoints = this.getLetterPoints('H', centerX - 15, centerY - 5, 20);
+        const hPoints = this.getLetterPoints('H', centerX - letterSpacing, centerY - 5, letterSize);
         // Add particles for letter A
-        const aPoints = this.getLetterPoints('A', centerX + 15, centerY - 5, 20);
+        const aPoints = this.getLetterPoints('A', centerX + letterSpacing, centerY - 5, letterSize);
 
         // Add letter particles
         [...hPoints, ...aPoints].forEach(point => {
@@ -59,7 +65,7 @@ class HeartParticles {
                 originX: point.x,
                 originY: point.y,
                 color: 'rgba(255, 255, 255, 0.9)',
-                size: Math.random() * 1.5 + 1,
+                size: this.isMobile ? Math.random() * 2.5 + 1.5 : Math.random() * 1.5 + 1,
                 vx: 0,
                 vy: 0
             });
@@ -68,7 +74,7 @@ class HeartParticles {
 
     getLetterPoints(letter, startX, startY, size) {
         const points = [];
-        const segments = 10; // Number of points per line segment
+        const segments = this.isMobile ? 15 : 10; // More segments for smoother letters on mobile
 
         if (letter === 'H') {
             // Left vertical line
@@ -120,11 +126,24 @@ class HeartParticles {
     }
 
     bindEvents() {
-        window.addEventListener('resize', () => this.resize());
-        window.addEventListener('mousemove', (e) => {
-            this.mouseX = e.clientX;
-            this.mouseY = e.clientY;
+        window.addEventListener('resize', () => {
+            this.resize();
+            // Reinitialize particles on resize
+            this.particles = [];
+            this.init();
         });
+        
+        // Handle both mouse and touch events
+        const moveHandler = (e) => {
+            const event = e.touches ? e.touches[0] : e;
+            const rect = this.canvas.getBoundingClientRect();
+            this.mouseX = event.clientX - rect.left;
+            this.mouseY = event.clientY - rect.top;
+        };
+
+        window.addEventListener('mousemove', moveHandler);
+        window.addEventListener('touchmove', moveHandler, { passive: true });
+        window.addEventListener('touchstart', moveHandler, { passive: true });
     }
 
     animate() {
@@ -138,14 +157,15 @@ class HeartParticles {
             particle.vx += dx * 0.03;
             particle.vy += dy * 0.03;
 
-            // Mouse interaction
+            // Mouse interaction with larger radius for mobile
+            const interactionRadius = this.isMobile ? 150 : 100;
             const mouseDistance = Math.hypot(
                 this.mouseX - particle.x,
                 this.mouseY - particle.y
             );
-            if (mouseDistance < 100) {
+            if (mouseDistance < interactionRadius) {
                 const angle = Math.atan2(particle.y - this.mouseY, particle.x - this.mouseX);
-                const force = (100 - mouseDistance) * 0.2;
+                const force = (interactionRadius - mouseDistance) * (this.isMobile ? 0.3 : 0.2);
                 particle.vx += Math.cos(angle) * force;
                 particle.vy += Math.sin(angle) * force;
             }
@@ -156,11 +176,11 @@ class HeartParticles {
             particle.x += particle.vx;
             particle.y += particle.vy;
 
-            // Draw particle with glow effect
+            // Draw particle with enhanced glow effect for mobile
             this.ctx.beginPath();
             this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
             this.ctx.fillStyle = particle.color;
-            this.ctx.shadowBlur = 5;
+            this.ctx.shadowBlur = this.isMobile ? 8 : 5;
             this.ctx.shadowColor = particle.color;
             this.ctx.fill();
             this.ctx.shadowBlur = 0;
@@ -184,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         z-index: -1;
         pointer-events: none;
         background: transparent;
+        touch-action: none;
     `;
     document.body.appendChild(canvas);
 
