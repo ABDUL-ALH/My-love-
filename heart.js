@@ -23,9 +23,10 @@ class HeartParticles {
         const centerY = this.canvas.height / 2;
         const scale = 15; // Size of the heart
 
-        for (let i = 0; i < numParticles; i++) {
+        // Create heart outline particles
+        for (let i = 0; i < numParticles * 0.7; i++) {
             // Parametric equations for heart shape
-            const t = (i / numParticles) * 2 * Math.PI;
+            const t = (i / (numParticles * 0.7)) * 2 * Math.PI;
             const x = 16 * Math.pow(Math.sin(t), 3);
             const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
             
@@ -44,6 +45,78 @@ class HeartParticles {
                 vy: 0
             });
         }
+
+        // Add particles for letter H
+        const hPoints = this.getLetterPoints('H', centerX - 15, centerY - 5, 20);
+        // Add particles for letter A
+        const aPoints = this.getLetterPoints('A', centerX + 15, centerY - 5, 20);
+
+        // Add letter particles
+        [...hPoints, ...aPoints].forEach(point => {
+            this.particles.push({
+                x: point.x,
+                y: point.y,
+                originX: point.x,
+                originY: point.y,
+                color: 'rgba(255, 255, 255, 0.9)',
+                size: Math.random() * 1.5 + 1,
+                vx: 0,
+                vy: 0
+            });
+        });
+    }
+
+    getLetterPoints(letter, startX, startY, size) {
+        const points = [];
+        const segments = 10; // Number of points per line segment
+
+        if (letter === 'H') {
+            // Left vertical line
+            for (let i = 0; i <= segments; i++) {
+                points.push({
+                    x: startX - size/4,
+                    y: startY - size/2 + (i * size/segments)
+                });
+            }
+            // Right vertical line
+            for (let i = 0; i <= segments; i++) {
+                points.push({
+                    x: startX + size/4,
+                    y: startY - size/2 + (i * size/segments)
+                });
+            }
+            // Middle horizontal line
+            for (let i = 0; i <= segments; i++) {
+                points.push({
+                    x: startX - size/4 + (i * size/2/segments),
+                    y: startY
+                });
+            }
+        } else if (letter === 'A') {
+            // Left diagonal
+            for (let i = 0; i <= segments; i++) {
+                points.push({
+                    x: startX - size/3 + (i * size/3/segments),
+                    y: startY + size/2 - (i * size/segments)
+                });
+            }
+            // Right diagonal
+            for (let i = 0; i <= segments; i++) {
+                points.push({
+                    x: startX + (i * size/3/segments),
+                    y: startY - size/2 + (i * size/segments)
+                });
+            }
+            // Middle horizontal line
+            for (let i = 0; i <= segments/2; i++) {
+                points.push({
+                    x: startX - size/6 + (i * size/3/segments),
+                    y: startY
+                });
+            }
+        }
+
+        return points;
     }
 
     bindEvents() {
@@ -83,11 +156,14 @@ class HeartParticles {
             particle.x += particle.vx;
             particle.y += particle.vy;
 
-            // Draw particle
+            // Draw particle with glow effect
             this.ctx.beginPath();
             this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
             this.ctx.fillStyle = particle.color;
+            this.ctx.shadowBlur = 5;
+            this.ctx.shadowColor = particle.color;
             this.ctx.fill();
+            this.ctx.shadowBlur = 0;
         });
 
         requestAnimationFrame(() => this.animate());
