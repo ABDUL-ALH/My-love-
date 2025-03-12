@@ -3,224 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To My Beloved Hiba 🌹</title>
+    <title>فديتك🌹</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cairo:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- صفحة كلمة السر -->
+    <!-- Password Page -->
     <section id="password-page" class="page">
+        <canvas id="heartCanvas-password" class="heart-canvas"></canvas>
         <div class="password-container">
             <div class="rose-icon">🌹</div>
-            <h1 class="glowing-text">أهلاً بكِ يا هباوي</h1>
-            <p class="typewriter">أدخلي كلمة السر لتدخلي إلى عالمنا الخاص</p>
+            <h1 class="glowing-text">مرحباً حبيبتي</h1>
+            <p class="typewriter">أدخلي كلمة المرور لعالمنا الخاص</p>
             <div class="input-group">
-                <input type="password" id="password-input" placeholder="كلمة السر">
-                <button onclick="checkPassword()" class="enter-btn">
+                <input type="password" id="password-input" placeholder="كلمة المرور">
+                <button class="enter-btn">
                     <i class="fas fa-heart"></i>
                 </button>
             </div>
-            <p id="error-message" class="error-message">كلمة السر غير صحيحة!</p>
+            <p id="error-message" class="error-message">كلمة المرور غير صحيحة!</p>
         </div>
     </section>
 
-    <!-- الموقع الرئيسي -->
+    <!-- Main Site -->
     <div id="main-site" class="main-site">
-        <!-- قائمة التنقل -->
+        <!-- Navigation -->
         <nav class="main-nav">
-            <div class="nav-brand">🌹 Hiba</div>
+            <div class="nav-brand">🌹 Love</div>
             <ul class="nav-links">
-                <li><a href="#" onclick="showPage('home')" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a></li>
-                <li><a href="#" onclick="showPage('story')" class="nav-link"><i class="fas fa-book-heart"></i> قصتنا</a></li>
-                <li><a href="#" onclick="showPage('gift')" class="nav-link"><i class="fas fa-gift"></i> هديتي</a></li>
-                <li><a href="#" onclick="showPage('choices')" class="nav-link"><i class="fas fa-heart"></i> خياراتنا</a></li>
-                <li><a href="#" onclick="showPage('messages')" class="nav-link"><i class="fas fa-envelope"></i> رسائلي</a></li>
+                <li><a href="#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="#story" class="nav-link"><i class="fas fa-book-heart"></i> قصتنا</a></li>
+                <li><a href="#gallery" class="nav-link"><i class="fas fa-images"></i> الصور</a></li>
+                <li><a href="#memories" class="nav-link"><i class="fas fa-heart"></i> الذكريات</a></li>
+                <li><a href="#messages" class="nav-link"><i class="fas fa-envelope"></i> الرسائل</a></li>
             </ul>
+            <button class="mobile-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
 
-        <!-- الصفحة الرئيسية -->
+        <!-- Home Page -->
         <section id="home" class="page active">
+            <canvas id="heartCanvas-home" class="heart-canvas"></canvas>
             <div class="content-container">
-                <h1 class="glowing-text">مرحباً بكِ في عالمنا الخاص يا هباوي</h1>
-                <p class="typewriter">كل لحظة معكِ هي هدية، وهذا الموقع هو مجرد طريقة صغيرة لأقول لكِ كم تعنيني</p>
-                <div class="floating-hearts"></div>
+                <h1 class="glowing-text">حبيبتي هبة</h1>
+                <p class="typewriter">كل لحظة معكِ هي هدية، وهذا الموقع هو مجرد طريقة بسيطة لأظهر لكِ كم أنتِ تعنين لي ❤️</p>
+                <div class="love-counter">
+                    <h3>وقت حبنا ❤️</h3>
+                    <div class="counter-values">
+                        <div class="counter-item">
+                            <span id="days">0</span>
+                            <label>يوم</label>
+                        </div>
+                        <div class="counter-item">
+                            <span id="hours">0</span>
+                            <label>ساعة</label>
+                        </div>
+                        <div class="counter-item">
+                            <span id="minutes">0</span>
+                            <label>دقيقة</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- صفحة قصتنا -->
+        <!-- Story Page -->
         <section id="story" class="page">
             <div class="content-container">
-                <h1 class="glowing-text">قصتنا الجميلة</h1>
-                <div class="story-timeline">
-                    <div class="timeline-item">
-                        <div class="date">أول لقاء</div>
-                        <div class="content">
-                            <p class="typewriter">اللحظة التي غيرت حياتي للأبد</p>
-                            <img src="memory1.jpg" alt="أول لقاء" class="memory-image">
-                        </div>
+                <div class="story-container">
+                    <h2 class="story-title">قصتنا</h2>
+                    <div class="love-quote">
+                        ويخلقُ الله لنا من الصدف أُناس لم تخال نفسُك يوماً أنهم سيكون بهذا القرب لك وإنهُ الشخص الذي اصبحت اتمنى اني أُكمل حياتي معه وان يكن لي رفيقاً في دربي ولا ارى غيره ولا اهتم بغيره فهو الكل بالكلِ
                     </div>
-                    <!-- يمكن إضافة المزيد من الذكريات هنا -->
+                    <div class="story-divider"></div>
+                    <div class="story-content">
+                        <p>
+                            فضول يدفعنا احيانا الى ان نتعرف على أناس عديده حتى وان لم يكونوا يشبهوننا بشيء هذا هو هدف الفضول استكشاف ومعرفه اشياء لم تكن لنا فيها علم من قبل وهذا هو نفسُ السبب الذي دفعني انا "هبه" الى تعرف ب "عبدالرحمن" لم يكن تعرف موفق في البدايه كُنا مختلفين بحق ف لا اشبهه ولا هو يشبهني بشيء كُنا نتجادل كثيراً على اتفه الامور والاسباب فكنت اكرهه وكان يظن اني غريبه ولم نكن مهتمين ببعض لم يكن له وجود رغم وجوده معي ولم يكن لي وجود في عالمه
+                        </p>
+                        <p>
+                            كنت اقطع تواصلي معه كثيرا لكن بطريقه ما كان هناك دائما طريقٌ للعوده بيننا ولا اتحدث عن ايام او اسابيع او شهور انا اتحدث عن سنوات وعندما اتذكر الان كيف كان الوضع بيننا تُصيبني حيره فكنت لا اتذكر اسمهُ حتى ولا اعتقد انه كان يتذكر اسمي مع مروره الايام والأشهر والسنوات اصبح بيننا حديث ولكن لم تتغير نظرتي اليه ما زلت اراه كما التقيته
+                        </p>
+                        <p>
+                            لكن اكتشفتُ انني اتشارك معه في بعض نقاط الفكريه وهو كذلك احبب النقاش معي واحببت النقاش معهُ بالرغم ان في اغلب الاوقات لم يكن ينتهي بهدوء لكني استطعت ان اتقبله وهذا امر جديد لم اتخيله يوما لم تكن تلك عادتي ف قاعدتي كانت كل شخص يخالفني بالرأي لا املك نقاش اخر معه سيكون الاول والاخير لكن لديه هو لم يكن الامر كذلك هل كسر تلك القاعده؟ نعم لقد فعل ولم يكتفي بها فقط
+                        </p>
+                        <p>
+                            وعند استمرارنا بالتحدث مع بعض لا اعتقد انني شعرت بالراحه مع شخص اخر من قبل مثل ما شعرت بالراحه معه فكنت عند كلامي معه لا ابدأ بسلام او تحيه كنت اتكلم بفوضويه واندفاع وهذي ليست عادتي لكن كنت اشعر بأني مفهومه بغض النظر عن طريقه كلامي لم اشعر انه سيحكم علي ولم اكن احكمُ عليه لم اعرف عنه شيء رغم مرور سنوات غير اسمه الذي عرفته حديثاً لم اعرف شكله وضعه حالته ماذا يقولون عنه ما رأي الاخرين عنه كنت اراه بمنظوري انا لم يكن يهمني رأي الاخرين حوله فقد كان لطيفا معي متفهم عقلاني استطيع الاعتماد عليه وهذه الصفات جذبتني اليه وقد جذبته كلامنا ونقاشاتنا واحس بالراحه ايضا معي
+                        </p>
+                        <p>
+                            مع مرور الايام اصبحت ادمنه واتعلق به واحبه لكني لم ابح بهذا لهُ كان يستمر في التلميح فكنت العب دورا بأني لا اخذ تلميحاته على محمل الجد فقد اوهمته بذلك مع مرور الايام تعلقنا ببعض واعتدنا على بعض
+                        </p>
+                        <p class="story-date">٢٣ من ابريل لعام ٢٠٢٤</p>
+                        <p>
+                            في هذا اليوم اتخذت خطوه جديده خطوه غيرت لي نظرتي تجاه الكثير اشياء وقد غيرت نظرتهُ الي في ذلك اليوم اتخذت قرار لا تراجع فيه لقد اعترفت انا بحبي له وها انا ذا في كل مره تمر الذكرى في ذهني لا استطيع اني امحي صدمته من ذهني وذاكرتي لم اتخيل انني انا قد اكسر العديد من الحواجز التي وضعتها لذاتي لاجل شخص لم اراه ولم أقابله يوما ولم تتلامس ايدينا معا لكن قد تلامست قلوبنا واحببنا بعض
+                        </p>
+                        <p>
+                            ومنذ ذلك اليوم انا لم اعد اعرف نفسي لم اصدمه فقط باعترافي المفاجئ وجرأتي تلك وثقتي قد صدم بجانبي العاطفي الذي لم أظهره يوما لاحد الذي صدمني انا ذاتي لم اكن اعرف انني سوف احب شخص بهذا العمق وبهذا اللاوعي لقد رأيت جانبا حنوناً فيه لم اراه من قبل تعلقت به واحببته
+                        </p>
+                        <p>
+                            وفي هذا اليوم الان في هذه اللحظه بعد هذه المده من علاقتنا وارتباط ارواحنا وقلوبنا مع بعض لقد مررنا بالكثير من الظروف الصعبه لكن المفاجاه ان هذه الظروف لم تضعف علاقتنا لقد جعلتها اقوى من قبل وفي كل يوم يمر اتاكد من مشاعري تجاهه واتأكد انه الشخص الذي اريد ان اكون بجانبه في مواقفه الصعبه وان اكون سندا له قبل المواقف الفرح وفي مقابل هذا اراه يقدم لي اضعاف ما اقدم له
+                        </p>
+                        <p>
+                            في الوقت الحالي لا اعرف ماذا يحمل لنا المستقبل لكن هناك شيء واحد متاكده منه انني سأحبه للابد ومتأكده من حب الذي يملكه لي واعلم ومتيقنه ان هذه المشاعر لن تزول سوف تقوى الحياه مليئه بالمفاجأت والصدف وحياتنا لا تخلوا منها انا احبك لكن الحب لا يكفي لاختيار الشخص المناسب المواقف هي التي تجعلنا تحدد وانت يا زوجي العزيز لم تكتفي بحبك لتبين لي انك الاختيار الصحيح افعالك كانت تتكلم وتشرح الكثير لي
+                        </p>
+                        <p>
+                            وفي ختام كلامي هذا قصتنا لم تنتهي ولن تنتهي هناك الكثير امامنا الكثير من المواقف والقصص والمشاعر التي ستحدث واتمنى ان اقضيها معك واعيشها معك وان نقضي حياتنا سويا بعيدا عن العالم فقط انا وانت يا محبوبي احبك عبدالرحمن ❤️❤️
+                        </p>
+                    </div>
+                    <div class="story-divider"></div>
+                    <div class="story-footer">
+                        <p class="story-highlight">قصتنا لم تنتهي ولن تنتهي هناك الكثير امامنا ❤️</p>
+                        <p>احبك هباوي ❤️</p>
+                    </div>
                 </div>
             </div>
+            <canvas id="heartCanvas-story" class="heart-canvas"></canvas>
         </section>
 
-        <!-- صفحة الهدية -->
-        <section id="gift" class="page">
+        <!-- Gallery Page -->
+        <section id="gallery" class="page">
+            <canvas id="heartCanvas-gallery" class="heart-canvas"></canvas>
             <div class="content-container">
-                <h1 class="glowing-text">هدية خاصة لكِ</h1>
-                <div class="gift-box">
-                    <div class="gift-lid"></div>
-                    <div class="gift-container">
-                        <p class="typewriter">لقد اخترت هذا لكِ لأنكِ تجعلين حياتي أجمل</p>
-                        <img src="gift.jpg" alt="هدية" class="gift-image">
-                    </div>
+                <h1 class="glowing-text">Our Precious Moments</h1>
+                <div class="gallery-grid">
+                    <!-- Add your images here -->
                 </div>
             </div>
         </section>
 
-        <!-- صفحة الخيارات -->
-        <section id="choices" class="page">
+        <!-- Memories Page -->
+        <section id="memories" class="page">
+            <canvas id="heartCanvas-memories" class="heart-canvas"></canvas>
             <div class="content-container">
-                <h1 class="glowing-text">لعبة الحب ❤️</h1>
-                <p class="typewriter">هيا نختبر معرفتك بي يا هباوي</p>
-                
-                <div class="quiz-container">
-                    <div class="quiz-question" id="question-1">
-                        <h3>السؤال الأول 🌹</h3>
-                        <p>ما هو لوني المفضل؟</p>
-                        <div class="choices-grid">
-                            <button class="choice-btn" onclick="checkAnswer(1, 'A')">
-                                <i class="fas fa-palette"></i>
-                                <span>الأحمر</span>
-                            </button>
-                            <button class="choice-btn" onclick="checkAnswer(1, 'B')">
-                                <i class="fas fa-palette"></i>
-                                <span>الأزرق</span>
-                            </button>
-                            <button class="choice-btn" onclick="checkAnswer(1, 'C')">
-                                <i class="fas fa-palette"></i>
-                                <span>الوردي</span>
-                            </button>
-                        </div>
+                <h1 class="glowing-text">Special Memories</h1>
+                <div class="memory-cards">
+                    <div class="memory-card">
+                        <h3>Our First Adventure</h3>
+                        <p class="typewriter">Remember when we got lost but found the most beautiful sunset?</p>
                     </div>
-
-                    <div class="quiz-question" id="question-2">
-                        <h3>السؤال الثاني 💝</h3>
-                        <p>أين كان أول لقاء لنا؟</p>
-                        <div class="choices-grid">
-                            <button class="choice-btn" onclick="checkAnswer(2, 'A')">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>في المقهى</span>
-                            </button>
-                            <button class="choice-btn" onclick="checkAnswer(2, 'B')">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>في الجامعة</span>
-                            </button>
-                            <button class="choice-btn" onclick="checkAnswer(2, 'C')">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>في الحديقة</span>
-                            </button>
-                        </div>
+                    <div class="memory-card">
+                        <h3>Rainy Day Coffee</h3>
+                        <p class="typewriter">That cozy coffee shop where we spent hours talking about our dreams.</p>
                     </div>
-
-                    <div class="quiz-question" id="question-3">
-                        <h3>السؤال الثالث 💫</h3>
-                        <p>ما هو طعامي المفضل؟</p>
-                        <div class="choices-grid">
-                            <button class="choice-btn" onclick="checkAnswer(3, 'A')">
-                                <i class="fas fa-utensils"></i>
-                                <span>البيتزا</span>
-                            </button>
-                            <button class="choice-btn" onclick="checkAnswer(3, 'B')">
-                                <i class="fas fa-utensils"></i>
-                                <span>السوشي</span>
-                            </button>
-                            <button class="choice-btn" onclick="checkAnswer(3, 'C')">
-                                <i class="fas fa-utensils"></i>
-                                <span>البرجر</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="quiz-question" id="question-4">
-                        <h3>السؤال الرابع 🎵</h3>
-                        <p>ما هي أغنيتنا المفضلة معاً؟</p>
-                        <div class="choices-grid">
-                            <button class="choice-btn" onclick="checkAnswer(4, 'A')">
-                                <i class="fas fa-music"></i>
-                                <span>Perfect - Ed Sheeran</span>
-                            </button>
-                            <button class="choice-btn" onclick="checkAnswer(4, 'B')">
-                                <i class="fas fa-music"></i>
-                                <span>All of Me - John Legend</span>
-                            </button>
-                            <button class="choice-btn" onclick="checkAnswer(4, 'C')">
-                                <i class="fas fa-music"></i>
-                                <span>Can't Help Falling in Love</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="quiz-question" id="question-5">
-                        <h3>السؤال الخامس 💭</h3>
-                        <p>ما هو حلمنا المشترك؟</p>
-                        <div class="choices-grid">
-                            <button class="choice-btn" onclick="checkAnswer(5, 'A')">
-                                <i class="fas fa-home"></i>
-                                <span>بيت صغير بحديقة</span>
-                            </button>
-                            <button class="choice-btn" onclick="checkAnswer(5, 'B')">
-                                <i class="fas fa-plane"></i>
-                                <span>السفر حول العالم</span>
-                            </button>
-                            <button class="choice-btn" onclick="checkAnswer(5, 'C')">
-                                <i class="fas fa-store"></i>
-                                <span>فتح مشروعنا الخاص</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="quiz-result" class="quiz-result">
-                        <h2>النتيجة 🎉</h2>
-                        <p class="score">إجاباتك الصحيحة: <span id="correct-answers">0</span>/5</p>
-                        <div class="result-message"></div>
-                        <button class="restart-btn" onclick="restartQuiz()">
-                            <i class="fas fa-redo"></i>
-                            <span>إعادة اللعب</span>
-                        </button>
+                    <div class="memory-card">
+                        <h3>Starlit Night</h3>
+                        <p class="typewriter">Watching the stars and making wishes for our future together.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- صفحة الرسائل -->
+        <!-- Messages Page -->
         <section id="messages" class="page">
+            <canvas id="heartCanvas-messages" class="heart-canvas"></canvas>
             <div class="content-container">
-                <h1 class="glowing-text">رسائل من قلبي</h1>
+                <h1 class="glowing-text">رسائل الحب</h1>
                 <div class="messages-container">
                     <div class="message-card">
                         <div class="message-content">
-                            <p class="typewriter">هَبَهْ، يا نور عيوني وروحي،</p>
-                            <p class="typewriter">أنتِ الحب الذي في قلبي يروحي.</p>
-                            <p class="typewriter">بكِ تغنى الوجود، وبكِ ازدهر،</p>
-                            <p class="typewriter">أنتِ الحلم الذي في قلبي يسطر.</p>
+                            <h3 class="message-title">يا نجمةً في سماءِ عمري</h3>
+                            <div class="poem-content">
+                                <p class="poem-line">يا نجمةً في سماءِ عمري تضيئينَ دربي إذا ما انطفى</p>
+                                <p class="poem-line">ويا وردةً من عبيرِ الربيعِ يزيدُ شذاها إذا ما جَفا</p>
+                                <div class="poem-divider"></div>
+                                <p class="poem-line">أحبّكِ نبضًا يسري بقلبي كأنكِ سرُّ الحياةِ الخفيّ</p>
+                                <p class="poem-line">فكيفَ أعيشُ وروحي لديكِ؟ وكيفَ أنا دونَ عينيكِ حيّ؟</p>
+                                <div class="poem-divider"></div>
+                                <p class="poem-line">إذا ما ابتسمتِ تراقصَ ضوءٌ على وجنتيكِ كحلمٍ جميلْ</p>
+                                <p class="poem-line">وإن غِبتِ عني، فإني أضيعُ كطفلٍ تهدَّمَ بيتٌ ظليلْ</p>
+                            </div>
+                            <p class="poem-signature">❤️ عبدالرحمن</p>
                         </div>
                     </div>
                     <div class="message-card">
                         <div class="message-content">
-                            <p class="typewriter">يا هباوي، يا أغلى من الدنيا،</p>
-                            <p class="typewriter">أنتِ النور الذي في ظلمتي يهدي.</p>
-                            <p class="typewriter">بكِ أدركت معنى الحياة،</p>
-                            <p class="typewriter">وبكِ صار قلبي في السماء يرتقي.</p>
-                        </div>
-                    </div>
-                    <div class="message-card">
-                        <div class="message-content">
-                            <p class="typewriter">أنتِ الحب الذي لا ينتهي،</p>
-                            <p class="typewriter">أنتِ الأمل الذي في قلبي يبقى.</p>
-                            <p class="typewriter">يا هبه، يا أغلى من كل شيء،</p>
-                            <p class="typewriter">أنتِ الحلم الذي في قلبي يسعى.</p>
+                            <p class="love-message">حبيبتي هبة،</p>
+                            <p class="typewriter">أنتِ نجمتي المضيئة في سماء حياتي</p>
+                            <p class="typewriter">كل يوم معكِ هو هدية من السماء</p>
+                            <p class="typewriter">أنتِ سر سعادتي وبهجة قلبي</p>
+                            <p class="typewriter">أحبك إلى الأبد ❤️</p>
                         </div>
                     </div>
                 </div>
